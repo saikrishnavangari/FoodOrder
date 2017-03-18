@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FoodOrder</string>
+    <string name="welcome_text">Welcome to BpMalvern</string>
+    <string name="order_action">Touch to place your food/coffee order</string>
+    <string name="coffee">Coffee</string>
+    <string name="food">Food</string>
+</resources>
