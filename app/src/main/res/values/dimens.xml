@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_options">50dp</dimen>
     <dimen name="button_options_padding">20dp</dimen>
+    <dimen name="carderview_corner_radius">8dp</dimen>
+    <dimen name="cardview_coffeetype_height">250dp</dimen>
 </resources>

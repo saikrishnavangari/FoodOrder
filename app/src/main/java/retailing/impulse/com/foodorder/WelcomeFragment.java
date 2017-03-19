@@ -1,8 +1,6 @@
 package retailing.impulse.com.foodorder;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -39,17 +37,9 @@ public class WelcomeFragment extends Fragment {
     @OnClick(R.id.order_button)
     public void orderButtonClicked(){
         Log.d(LOG_TAG,"orderbuttonClicked");
-        Activity activity=getActivity();
-        OptionsFragment optionsFragment=new OptionsFragment();
-        FragmentTransaction transaction = activity.getFragmentManager().beginTransaction();
+        MainActivity activity = (MainActivity) getActivity();
+        activity.onOrderButtonClicked();
 
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack
-        transaction.replace(R.id.fragment_container, optionsFragment);
-        transaction.addToBackStack(null);
-
-// Commit the transaction
-        transaction.commit();
     }
 
 

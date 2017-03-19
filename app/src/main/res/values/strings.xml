@@ -4,4 +4,9 @@
     <string name="order_action">Touch to place your food/coffee order</string>
     <string name="coffee">Coffee</string>
     <string name="food">Food</string>
+    <string name="latte">Latte</string>
+    <string name="capuccino">Cappuccino</string>
+    <string name="flatwhite">FlatWhite</string>
+    <string name="longblack">LongBlack</string>
+    <string name="coffeelist">CofeeType</string>
 </resources>
