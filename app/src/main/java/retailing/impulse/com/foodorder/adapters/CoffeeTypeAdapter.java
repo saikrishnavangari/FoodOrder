@@ -7,12 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retailing.impulse.com.foodorder.MenuList;
 import retailing.impulse.com.foodorder.R;
 
 /**
@@ -21,18 +21,18 @@ import retailing.impulse.com.foodorder.R;
 
 public class CoffeeTypeAdapter extends RecyclerView.Adapter<CoffeeTypeAdapter.ViewHolder> {
     public static final String LOG_TAG = CoffeeTypeAdapter.class.getSimpleName();
-    private Context mContext;
+    ListItemClickListener mListItemClickListener;
     private List<String> mCoffeeList;
 
-    public CoffeeTypeAdapter(Context context, List<String> CoffeeTypeList) {
-        mContext = context;
+    public CoffeeTypeAdapter(MenuList listener, List<String> CoffeeTypeList) {
+        mListItemClickListener = listener;
         mCoffeeList = CoffeeTypeList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_listitem, parent, false);
+        Context context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_listitem, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -41,6 +41,7 @@ public class CoffeeTypeAdapter extends RecyclerView.Adapter<CoffeeTypeAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         Log.d(LOG_TAG, mCoffeeList.get(position));
         holder.coffee_type.setText(mCoffeeList.get(position));
+        holder.coffee_type.setOnClickListener(holder);
     }
 
     @Override
@@ -48,20 +49,23 @@ public class CoffeeTypeAdapter extends RecyclerView.Adapter<CoffeeTypeAdapter.Vi
         return mCoffeeList.size();
     }
 
+    public interface ListItemClickListener {
+        void onItemListClicked(int clickedItemPosition);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public
         @BindView(R.id.coffee_type)
         Button coffee_type;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(mContext, "Youclicked a Button", Toast.LENGTH_LONG).show();
+            Log.d(LOG_TAG, "inside on clicked method");
+            mListItemClickListener.onItemListClicked(getAdapterPosition());
         }
     }
 }

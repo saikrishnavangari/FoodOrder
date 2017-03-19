@@ -43,7 +43,7 @@ public class CoffeeOrderFragment extends Fragment {
         ButterKnife.bind(this, view);
         gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(new CoffeeTypeAdapter(getActivity(), mCoffeeList));
+        recyclerView.setAdapter(new CoffeeTypeAdapter((MenuList) getActivity(), mCoffeeList));
         return view;
     }
 }
